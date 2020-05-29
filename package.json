@@ -1,0 +1,76 @@
+{
+  "name": "my-electron",
+  "version": "0.1.0",
+  "private": true,
+  "main": "build/electron.js",
+  "description": "项目描述",
+  "author": {
+    "name": "katte",
+    "email": "417560450@qq.com",
+    "url": "https://github.com/katteXu"
+  },
+  "homepage": "./",
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "antd": "^4.2.5",
+    "cross-env": "^7.0.2",
+    "electron-log": "^4.2.0",
+    "electron-updater": "^4.3.1",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "sass-loader": "^8.0.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron-start": "yarn build && cross-env NODE_ENV=production electron build/electron.js",
+    "electron-dev": "concurrently 'BROWSER=none yarn start' 'wait-on http://localhost:3000 && cross-env NODE_ENV=development electron public/electron.js'",
+    "dist-win32": "electron-builder --win --ia32",
+    "dist-win64": "electron-builder --win --x64",
+    "dist-mac": "electron-builder --mac"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "electron": "^8.2.5",
+    "electron-builder": "^22.6.1",
+    "wait-on": "^5.0.0"
+  },
+  "build": {
+    "productName": "my-project",
+    "appId": "org.my-project.electron-react-antd",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "build/**/*"
+    ],
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://katte-saas.oss-cn-beijing.aliyuncs.com/download/"
+      }
+    ]
+  }
+}
